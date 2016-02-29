@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Mouvement : MonoBehaviour {
 	public GameObject chemin;
+	public float chevauxVapeur;
+	public float vitesseMaximale;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +17,6 @@ public class Mouvement : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (6f, 0f), ForceMode2D.Force);
+		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (Mathf.Clamp(chevauxVapeur + GetComponent<Rigidbody2D>().velocity.x, 0f, vitesseMaximale), 0f), ForceMode2D.Force);
 	}
 }
