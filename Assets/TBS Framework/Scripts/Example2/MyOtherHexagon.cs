@@ -50,6 +50,11 @@ public class MyOtherHexagon : Hexagon
         var ret = GetComponent<SpriteRenderer>().bounds.size;
         return ret*0.98f;
     }
+
+	public bool IsTaken() 
+	{
+		return this.IsTaken();
+	}
 }
 
 public enum GroundType
