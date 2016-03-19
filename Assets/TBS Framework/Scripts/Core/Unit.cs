@@ -45,6 +45,7 @@ public abstract class Unit : MonoBehaviour
     public Cell Cell { get; set; }
 
     public int HitPoints;
+	public int AttackRangeMin;
     public int AttackRange;
     public int AttackFactor;
     public int DefenceFactor;
@@ -160,6 +161,8 @@ public abstract class Unit : MonoBehaviour
     {
 		if (sourceCell.GetDistance(other.Cell) > AttackRange)
             return false;
+		if (sourceCell.GetDistance(other.Cell) < AttackRangeMin)
+			return false;
 		if (!IsObstacleInTheWay(other, sourceCell))
 		    return false;
         return true;
