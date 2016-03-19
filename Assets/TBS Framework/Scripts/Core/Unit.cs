@@ -163,7 +163,7 @@ public abstract class Unit : MonoBehaviour
             return false;
 		if (sourceCell.GetDistance(other.Cell) < AttackRangeMin)
 			return false;
-		if (!IsObstacleInTheWay(other, sourceCell))
+		if (IsObstacleInTheWay(other, sourceCell))
 		    return false;
         return true;
     }
