@@ -158,11 +158,30 @@ public abstract class Unit : MonoBehaviour
     /// </summary>
     public virtual bool IsUnitAttackable(Unit other, Cell sourceCell)
     {
-        if (sourceCell.GetDistance(other.Cell) <= AttackRange)
-            return true;
-
-        return false;
+		if (sourceCell.GetDistance(other.Cell) > AttackRange)
+            return false;
+		if (!IsObstacleInTheWay(other, sourceCell))
+		    return false;
+        return true;
     }
+
+	/// <summary>
+	/// Method indicates any obstacle tile lies between the attacker and his victime.
+	/// </summary>
+	public virtual bool IsObstacleInTheWay(Unit other, Cell sourceCell)
+	{
+		GameObject cellgrid = GameObject.Find ("CellGrid");
+		List<Cell> cells = cellgrid.GetComponent<CellGrid> ().Cells;
+		other.Cell.IsTaken = false;
+		if (this.FindPath (cells, other.Cell).Count > sourceCell.GetDistance(other.Cell))
+		{
+			other.Cell.IsTaken = true;
+			return false;
+		}
+		other.Cell.IsTaken = true;
+		return true;
+	}
+
     /// <summary>
     /// Method deals damage to unit given as parameter.
     /// </summary>
