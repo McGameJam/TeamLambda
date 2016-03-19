@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 class OtherGuiController : MonoBehaviour
 {
@@ -17,6 +18,10 @@ class OtherGuiController : MonoBehaviour
     public Text AttackText;
     public Text DefenceText;
     public Text RangeText;
+
+	public Dropdown DropdownActions;
+
+	private List<UnitAction> actionsAffichees = new List<UnitAction>();
 
     private void Start()
     {
@@ -42,6 +47,8 @@ class OtherGuiController : MonoBehaviour
             unit.GetComponent<Unit>().UnitHighlighted += OnUnitHighlighted;
             unit.GetComponent<Unit>().UnitDehighlighted += OnUnitDehighlighted;
             unit.GetComponent<Unit>().UnitAttacked += OnUnitAttacked;
+			unit.GetComponent<Unit> ().UnitSelected += OnUnitSelected;
+			unit.GetComponent<Unit> ().UnitDeselected += OnUnitDeselected;
         }
         InfoText.text = "Player " + (CellGrid.CurrentPlayerNumber + 1);
 
@@ -85,6 +92,8 @@ class OtherGuiController : MonoBehaviour
         var defence = (sender as Unit).DefenceFactor;
         var range = (sender as Unit).AttackRange;
 
+
+
         float hpScale = (float)((float)(sender as Unit).HitPoints / (float)(sender as Unit).TotalHitPoints);
 
         Image fullHpBar = Instantiate(FullHPBar);
@@ -117,10 +126,42 @@ class OtherGuiController : MonoBehaviour
                 RangeMarker.rectTransform.anchorMax = new Vector2((i * 0.14f) + 0.13f, 0.6f);             
         }
     }
+	private void OnUnitSelected(object sender, EventArgs e)
+	{
+		MAJActions (sender, e);
+	}
+	private void OnUnitDeselected(object sender, EventArgs e)
+	{
+		MAJActions (null, e);
+	}
+
+	private void MAJActions(object sender, EventArgs e)
+	{
+		var actions = sender is UnitAvecActions ? (sender as UnitAvecActions).actions : null;
+		DropdownActions.ClearOptions ();
+		this.actionsAffichees.Clear ();
+		List<string> noms = new List<string> ();
+		noms.Add ("Actions");
+		DropdownActions.interactable = actions != null;
+		if (actions != null) {
+			foreach (UnitAction action in actions) {
+				noms.Add (action.nom);
+				actionsAffichees.Add (action);
+			}
+		}
+		DropdownActions.AddOptions (noms);
+	}
 
     public void RestartLevel()
     {
         Application.LoadLevel(Application.loadedLevel);
     }
+
+	public void AppliquerAction(int index)
+	{
+		if (index > 0)
+			actionsAffichees [index - 1].Action ();
+		DropdownActions.value = 0;
+	}
 }
 

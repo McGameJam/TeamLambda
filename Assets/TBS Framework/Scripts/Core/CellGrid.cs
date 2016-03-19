@@ -16,7 +16,7 @@ public class CellGrid : MonoBehaviour
     private CellGridState _cellGridState;//The grid delegates some of its behaviours to cellGridState object.
     public CellGridState CellGridState
     {
-        private get
+        get
         {
             return _cellGridState;
         }
@@ -99,8 +99,9 @@ public class CellGrid : MonoBehaviour
         CellGridState.OnCellSelected(sender as Cell);
     } 
     private void OnCellClicked(object sender, EventArgs e)
-    {
-        CellGridState.OnCellClicked(sender as Cell);
+	{
+		Cell cell = sender as Cell;
+        CellGridState.OnCellClicked(cell);
     }
 
     private void OnUnitClicked(object sender, EventArgs e)
