@@ -78,7 +78,7 @@ public class CellGridStateTarget : CellGridState {
 			cell.MarkAsReachable();
 		}
 
-		if (_unit.ActionPoints <= 0) return;
+/*		if (_unit.ActionPoints <= 0) return;
 
 		foreach (var currentUnit in _cellGrid.Units)
 		{
@@ -94,7 +94,7 @@ public class CellGridStateTarget : CellGridState {
 
 		if (unitCell.GetNeighbours(_cellGrid.Cells).FindAll(c => c.MovementCost <= _unit.MovementPoints).Count == 0 
 			&& _unitsInRange.Count == 0)
-			_unit.SetState(new UnitStateMarkedAsFinished(_unit));
+			_unit.SetState(new UnitStateMarkedAsFinished(_unit));*/
 	}
 	public override void OnStateExit()
 	{

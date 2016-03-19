@@ -170,16 +170,19 @@ public abstract class Unit : MonoBehaviour
 	/// </summary>
 	public virtual bool IsObstacleInTheWay(Unit other, Cell sourceCell)
 	{
+		if (other == this)
+			return false;
 		GameObject cellgrid = GameObject.Find ("CellGrid");
 		List<Cell> cells = cellgrid.GetComponent<CellGrid> ().Cells;
+		bool isTaken = other.Cell.IsTaken;
 		other.Cell.IsTaken = false;
 		if (this.FindPath (cells, other.Cell).Count > sourceCell.GetDistance(other.Cell))
 		{
 			other.Cell.IsTaken = true;
-			return false;
+			return true;
 		}
-		other.Cell.IsTaken = true;
-		return true;
+		other.Cell.IsTaken = isTaken;
+		return false;
 	}
 
     /// <summary>
