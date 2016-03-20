@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 class OtherGuiController : MonoBehaviour
 {
@@ -165,6 +166,11 @@ class OtherGuiController : MonoBehaviour
 		if (index > 0)
 			actionsAffichees [index - 1].Action ();
 		DropdownActions.value = 0;
+	}
+
+	public void ReturnToMainMenu()
+	{
+		SceneManager.LoadScene("EarlGym", LoadSceneMode.Single);
 	}
 }
 

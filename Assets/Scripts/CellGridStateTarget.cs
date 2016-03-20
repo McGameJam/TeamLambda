@@ -60,13 +60,13 @@ public class CellGridStateTarget : CellGridState {
 
 	public override void OnCellClicked(Cell cell)
 	{
-		if (_cellAction != null)
+		if (_cellAction != null && _pathsInRange.Contains(cell))
 			_cellAction (cell);
 		_cellGrid.CellGridState = new CellGridStateWaitingForInput (_cellGrid);
 	}
 	public override void OnUnitClicked(Unit unit)
 	{
-		if (_unitAction != null)
+		if (_unitAction != null && _unitsInRange.Contains(unit))
 			_unitAction (unit);
 		_cellGrid.CellGridState = new CellGridStateWaitingForInput (_cellGrid);
 	}
