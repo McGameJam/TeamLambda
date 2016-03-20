@@ -9,16 +9,39 @@ public class CellGridStateTarget : CellGridState {
 	private Unit _unit;
 	List<Cell> _pathsInRange;
 	List<Unit> _unitsInRange;
-	Func<List<Cell>, List<Cell>> _predicate;
+	Func<List<Cell>, List<Cell>> _cellFilter;
+	Predicate<Unit> _unitPredicate;
 	Action<Cell> _cellAction;
 	Action<Unit> _unitAction;
 
-	public CellGridStateTarget(CellGrid cellGrid, Unit unit, Func<List<Cell>, List<Cell>> predicate, Action<Cell> cellAction, Action<Unit> unitAction) : base(cellGrid)
+	public CellGridStateTarget(CellGrid cellGrid, Unit unit, Func<List<Cell>, List<Cell>> cellFilter, Action<Cell> cellAction)
+		: base(cellGrid)
 	{
 		_unit = unit;
 		_pathsInRange = new List<Cell>();
 		_unitsInRange = new List<Unit>();
-		_predicate = predicate;
+		_cellFilter = cellFilter;
+		_cellAction = cellAction;
+	}
+
+	public CellGridStateTarget(CellGrid cellGrid, Unit unit, Predicate<Unit> unitPredicate, Action<Unit> unitAction)
+		: base(cellGrid)
+	{
+		_unit = unit;
+		_pathsInRange = new List<Cell>();
+		_unitsInRange = new List<Unit>();
+		_unitPredicate = unitPredicate;
+		_unitAction = unitAction;
+	}
+
+	public CellGridStateTarget(CellGrid cellGrid, Unit unit, Func<List<Cell>, List<Cell>> cellFilter, Predicate<Unit> unitPredicate, Action<Cell> cellAction, Action<Unit> unitAction)
+		: base(cellGrid)
+	{
+		_unit = unit;
+		_pathsInRange = new List<Cell>();
+		_unitsInRange = new List<Unit>();
+		_cellFilter = cellFilter;
+		_unitPredicate = unitPredicate;
 		_cellAction = cellAction;
 		_unitAction = unitAction;
 	}
@@ -63,38 +86,28 @@ public class CellGridStateTarget : CellGridState {
 	{
 		base.OnStateEnter();
 
-		_unit.OnUnitSelected();
-		var unitCell = _unit.Cell;
+		if (_cellFilter != null) {
+			_pathsInRange = _cellFilter(_cellGrid.Cells);
 
-		_pathsInRange = _predicate(_cellGrid.Cells);
-		var cellsNotInRange = _cellGrid.Cells.Except(_pathsInRange);
+			var cellsNotInRange = _cellGrid.Cells.Except(_pathsInRange);
 
-		foreach (var cell in cellsNotInRange)
-		{
-			cell.UnMark();
-		}
-		foreach (var cell in _pathsInRange)
-		{
-			cell.MarkAsReachable();
-		}
-
-/*		if (_unit.ActionPoints <= 0) return;
-
-		foreach (var currentUnit in _cellGrid.Units)
-		{
-			if (currentUnit.PlayerNumber.Equals(_unit.PlayerNumber))
-				continue;
-
-			if (_unit.IsUnitAttackable(currentUnit,_unit.Cell))
+			foreach (var cell in cellsNotInRange)
 			{
-				currentUnit.SetState(new UnitStateMarkedAsReachableEnemy(currentUnit));
-				_unitsInRange.Add(currentUnit);
+				cell.UnMark();
+			}
+			foreach (var cell in _pathsInRange)
+			{
+				cell.MarkAsReachable();
 			}
 		}
+		if (_unitPredicate != null) {
+			_unitsInRange = _cellGrid.Units.FindAll (_unitPredicate);
 
-		if (unitCell.GetNeighbours(_cellGrid.Cells).FindAll(c => c.MovementCost <= _unit.MovementPoints).Count == 0 
-			&& _unitsInRange.Count == 0)
-			_unit.SetState(new UnitStateMarkedAsFinished(_unit));*/
+			foreach (var currentUnit in _unitsInRange)
+			{
+				currentUnit.SetState(new UnitStateMarkedAsReachableEnemy(currentUnit));
+			}
+		}
 	}
 	public override void OnStateExit()
 	{

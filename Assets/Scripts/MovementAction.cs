@@ -14,9 +14,9 @@ public class MovementAction : UnitAction {
 	{
 		GameObject cellGridObj = GameObject.Find ("CellGrid");
 		CellGrid grid = cellGridObj.GetComponent<CellGrid> ();
-		if (grid != null) {
+		if (grid != null && grid.CellGridState is CellGridStateUnitSelected) {
 			Unit unit = (grid.CellGridState as CellGridStateUnitSelected).selection;
-			Func<List<Cell>, List<Cell>> predicate = (list) => {
+			Func<List<Cell>, List<Cell>> filter = (list) => {
 				return unit.GetAvailableDestinations(list);
 			};
 			Action<Cell> cellAction = (Cell cell) => {
@@ -29,9 +29,8 @@ public class MovementAction : UnitAction {
 				var path = unit.FindPath(grid.Cells, cell);
 				unit.Move(cell,path);
 			};
-			Action<Unit> unitAction = null;
 			//grid.CellGridState = new CellGridStateUnitMovement(grid, (grid.CellGridState as CellGridStateUnitSelected).selection);
-			grid.CellGridState = new CellGridStateTarget (grid, unit, predicate, cellAction, unitAction);
+			grid.CellGridState = new CellGridStateTarget (grid, unit, filter, cellAction);
 		}
 	}
 }
