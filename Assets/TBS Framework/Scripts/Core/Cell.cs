@@ -41,9 +41,7 @@ public abstract class Cell : MonoBehaviour, IGraphNode
     }
     void OnMouseDown()
     {
-		Debug.Log ("avant");
 		if (!EventSystem.current.IsPointerOverGameObject())
-			Debug.Log ("Après");
         	if (CellClicked != null)
             	CellClicked.Invoke(this, new EventArgs());
     }
