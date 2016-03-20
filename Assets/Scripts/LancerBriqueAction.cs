@@ -18,16 +18,16 @@ public class LancerBriqueAction : UnitAction
 		if (grid != null && grid.CellGridState is CellGridStateUnitSelected) {
 			Unit unit = (grid.CellGridState as CellGridStateUnitSelected).selection;
 			Predicate<Unit> predicate = (u) => {
+				var hasActionPoints = unit.ActionPoints > 0;
 				var isDifferent = unit != u;
 				var isEnemy = unit.PlayerNumber != u.PlayerNumber;
 				var isCloseEnough = unit.Cell.GetDistance (u.Cell) <= 2;
 				var isWayClearOfObstacles = !unit.IsObstacleInTheWay (u, unit.Cell);
-				return isDifferent && isEnemy && isCloseEnough && isWayClearOfObstacles;
+				return hasActionPoints && isDifferent && isEnemy && isCloseEnough && isWayClearOfObstacles;
 			};
 			Action<Unit> unitAction = (Unit target) => {
-				Debug.Log ("Action");
+				unit.DealDamage(target);
 			};
-			//grid.CellGridState = new CellGridStateUnitMovement(grid, (grid.CellGridState as CellGridStateUnitSelected).selection);
 			grid.CellGridState = new CellGridStateTarget (grid, unit, predicate, unitAction);
 		}
 	}
