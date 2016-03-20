@@ -12,6 +12,7 @@ public class MenuButtons : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		startButton.SetActive (true);
 		startPanel.SetActive (false);
 
