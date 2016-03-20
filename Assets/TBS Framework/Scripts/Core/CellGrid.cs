@@ -88,6 +88,8 @@ public class CellGrid : MonoBehaviour
             {
                 unit.UnitClicked += OnUnitClicked;
                 unit.UnitDestroyed += OnUnitDestroyed;
+				unit.UnitHighlighted += OnUnitHighlighted;
+				unit.UnitDehighlighted += OnUnitDehighlighted;
             }
         }
         else
@@ -129,6 +131,16 @@ public class CellGrid : MonoBehaviour
                 GameEnded.Invoke(this, new EventArgs());
         }
     }
+
+	private void OnUnitHighlighted(object sender, EventArgs e)
+	{
+		OnCellHighlighted ((sender as Unit).Cell, e);
+	}
+
+	private void OnUnitDehighlighted(object sender, EventArgs e)
+	{
+		OnCellDehighlighted ((sender as Unit).Cell, e);
+	}
     
     /// <summary>
     /// Method is called once, at the beggining of the game.
