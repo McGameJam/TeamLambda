@@ -32,7 +32,7 @@ public class Alien : Unit
 
     public override void MarkAsAttacking(Unit other)
     {
-        StartCoroutine(Jerk(other,0.25f));
+		//StartCoroutine(Jerk(other,0.25f));
     }
     public override void MarkAsDefending(Unit other)
     {

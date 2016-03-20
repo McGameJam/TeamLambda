@@ -7,6 +7,7 @@ public abstract class UnitAction : MonoBehaviour {
 	public bool active = true;
 	public Sprite icon;
 	public bool oncePerUnit = false;
+	public UnitAvecActions unit;
 
 	public virtual void Action ()
 	{
