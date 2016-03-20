@@ -5,11 +5,6 @@ using System.Collections.Generic;
 
 public class MovementAction : UnitAction {
 
-	public MovementAction()
-	{
-		this.nom = "Déplacer";
-	}
-
 	public override void Action()
 	{
 		GameObject cellGridObj = GameObject.Find ("CellGrid");
@@ -28,9 +23,10 @@ public class MovementAction : UnitAction {
 
 				var path = unit.FindPath(grid.Cells, cell);
 				unit.Move(cell,path);
+				base.Action ();
 			};
 			//grid.CellGridState = new CellGridStateUnitMovement(grid, (grid.CellGridState as CellGridStateUnitSelected).selection);
-			grid.CellGridState = new CellGridStateTarget (grid, unit, filter, cellAction);
+			grid.CellGridState = new CellGridStateTarget (grid, unit, CellGridStateTarget.eTargetType.Path, filter, cellAction);
 		}
 	}
 }
