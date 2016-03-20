@@ -28,7 +28,7 @@ public class LancerBriqueAction : UnitAction
 			Action<Unit> unitAction = (Unit target) => {
 				unit.DealDamage(target);
 			};
-			grid.CellGridState = new CellGridStateTarget (grid, unit, predicate, unitAction);
+			grid.CellGridState = new CellGridStateTarget (grid, unit, CellGridStateTarget.eTargetType.Point, predicate, unitAction);
 		}
 	}
 }

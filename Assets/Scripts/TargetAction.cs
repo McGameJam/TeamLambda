@@ -30,7 +30,7 @@ public class TargetAction : UnitAction {
 		CellGrid grid = cellGridObj.GetComponent<CellGrid> ();
 		if (grid != null && grid.CellGridState is CellGridStateUnitSelected) {
 			Unit unit = (grid.CellGridState as CellGridStateUnitSelected).selection;
-			grid.CellGridState = new CellGridStateTarget(grid, unit, _cellFilter, _unitPredicate, _cellAction, _unitAction);
+			grid.CellGridState = new CellGridStateTarget(grid, unit, CellGridStateTarget.eTargetType.Point, _cellFilter, _unitPredicate, _cellAction, _unitAction);
 		}
 	}
 }

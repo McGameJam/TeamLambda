@@ -24,7 +24,7 @@ public class GrenadeLacrymoAction : UnitAction {
 				unit.Move(cell,path);
 			};
 			//grid.CellGridState = new CellGridStateUnitMovement(grid, (grid.CellGridState as CellGridStateUnitSelected).selection);
-			grid.CellGridState = new CellGridStateTarget (grid, unit, filter, cellAction);
+			grid.CellGridState = new CellGridStateTarget (grid, unit, CellGridStateTarget.eTargetType.Sept, filter, cellAction);
 		}
 	}
 }
