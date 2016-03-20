@@ -33,11 +33,13 @@ public class MenuButtons : MonoBehaviour {
 
 	public void onDeathMatch()
 	{
-		SceneManager.LoadScene ("LudoGym" ,LoadSceneMode.Single);
+		Debug.Log ("Vers LudoGym");
+		SceneManager.LoadScene("LudoGym", LoadSceneMode.Single);
+		Debug.Log ("Success");
 	}
 	public void onKingofHillClick()
 	{
-		SceneManager.LoadScene ("KingOfTheHill" , LoadSceneMode.Single);
+		SceneManager.LoadScene ("KingOfTheHill", LoadSceneMode.Single);
 	}
 	public void onCreditClick()
 	{
