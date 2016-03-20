@@ -6,13 +6,8 @@ public class ActionButton : MonoBehaviour {
 	public UnitAvecActions unitAvecAction;
 	public UnitAction unitAction;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public void Apply()
+	{
+		unitAction.Action ();
 	}
 }
