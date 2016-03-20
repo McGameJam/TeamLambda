@@ -1,5 +1,7 @@
 ﻿class CellGridStateWaitingForInput : CellGridState
 {
+	private Unit selectedUnit;
+
     public CellGridStateWaitingForInput(CellGrid cellGrid) : base(cellGrid)
     {
     }

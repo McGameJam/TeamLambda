@@ -9,14 +9,19 @@ using System;
 /// </summary>
 public class CellGrid : MonoBehaviour
 {
+	public int SetTime;
+	public int WaitingTime;// only public for testing, change to private 
+	private int pl_Num_holder;
+	public GameObject winningTile;
     public event EventHandler GameStarted;
     public event EventHandler GameEnded;
     public event EventHandler TurnEnded;
-    
+	public Canvas bubbleActionCanvas;
+
     private CellGridState _cellGridState;//The grid delegates some of its behaviours to cellGridState object.
     public CellGridState CellGridState
     {
-        private get
+        get
         {
             return _cellGridState;
         }
@@ -45,6 +50,7 @@ public class CellGrid : MonoBehaviour
 
     void Start()
     {
+		WaitingTime = SetTime;
         Players = new List<Player>();
         for (int i = 0; i < PlayersParent.childCount; i++)
         {
@@ -82,12 +88,19 @@ public class CellGrid : MonoBehaviour
             {
                 unit.UnitClicked += OnUnitClicked;
                 unit.UnitDestroyed += OnUnitDestroyed;
+				unit.UnitHighlighted += OnUnitHighlighted;
+				unit.UnitDehighlighted += OnUnitDehighlighted;
             }
         }
         else
             Debug.LogError("No IUnitGenerator script attached to cell grid");
         
         StartGame();
+
+		if (bubbleActionCanvas != null)
+			bubbleActionCanvas.GetComponent<ActionBubble> ().CanvasRegisterCallBacks ();
+		else
+			Debug.LogError ("No Action Bubble component available");
     }
 
     private void OnCellDehighlighted(object sender, EventArgs e)
@@ -99,8 +112,9 @@ public class CellGrid : MonoBehaviour
         CellGridState.OnCellSelected(sender as Cell);
     } 
     private void OnCellClicked(object sender, EventArgs e)
-    {
-        CellGridState.OnCellClicked(sender as Cell);
+	{
+		Cell cell = sender as Cell;
+        CellGridState.OnCellClicked(cell);
     }
 
     private void OnUnitClicked(object sender, EventArgs e)
@@ -117,6 +131,16 @@ public class CellGrid : MonoBehaviour
                 GameEnded.Invoke(this, new EventArgs());
         }
     }
+
+	private void OnUnitHighlighted(object sender, EventArgs e)
+	{
+		OnCellHighlighted ((sender as Unit).Cell, e);
+	}
+
+	private void OnUnitDehighlighted(object sender, EventArgs e)
+	{
+		OnCellDehighlighted ((sender as Unit).Cell, e);
+	}
     
     /// <summary>
     /// Method is called once, at the beggining of the game.
@@ -143,15 +167,56 @@ public class CellGrid : MonoBehaviour
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnEnd(); });
 
         CurrentPlayerNumber = (CurrentPlayerNumber + 1) % NumberOfPlayers;
+
         while (Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).Count == 0)
         {
             CurrentPlayerNumber = (CurrentPlayerNumber + 1)%NumberOfPlayers;
         }//Skipping players that are defeated.
 
+
         if (TurnEnded != null)
             TurnEnded.Invoke(this, new EventArgs());
+		
 
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnStart(); });
-        Players.Find(p => p.PlayerNumber.Equals(CurrentPlayerNumber)).Play(this);     
+        Players.Find(p => p.PlayerNumber.Equals(CurrentPlayerNumber)).Play(this);
+		Debug.Log ("Current Player: " + CurrentPlayerNumber);
+
+		if (winningTile != null)
+			vTest ();
+
     }
+
+	public void vTest()
+	{
+		
+		if (winningTile.GetComponent<Cell> ().IsTaken && (pl_Num_holder == null || pl_Num_holder == CurrentPlayerNumber)) {
+			pl_Num_holder = CurrentPlayerNumber;
+			Debug.Log ("taken by player " + pl_Num_holder); 
+			WaitingTime -= 1;
+
+
+			if (WaitingTime <= 0) {
+				if (GameEnded != null) {
+					GameEnded.Invoke (this, new EventArgs ());
+				}
+			}
+
+		}
+		else if(!winningTile.GetComponent<Cell> ().IsTaken){
+			Debug.Log ("Current unit was removed from tile, resetting counter.");
+			WaitingTime = SetTime;
+			pl_Num_holder = (pl_Num_holder + 1)%2;
+
+
+
+
+		}
+
+
+
+
+
+	}
+
 }

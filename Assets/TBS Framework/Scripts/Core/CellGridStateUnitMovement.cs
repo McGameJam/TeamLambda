@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-class CellGridStateUnitSelected : CellGridState
+class CellGridStateUnitMovement : CellGridState
 {
     private Unit _unit;
     private List<Cell> _pathsInRange;
@@ -9,7 +9,7 @@ class CellGridStateUnitSelected : CellGridState
 
     private Cell _unitCell;
 
-    public CellGridStateUnitSelected(CellGrid cellGrid, Unit unit) : base(cellGrid)
+    public CellGridStateUnitMovement(CellGrid cellGrid, Unit unit) : base(cellGrid)
     {
         _unit = unit;
         _pathsInRange = new List<Cell>();
@@ -34,7 +34,7 @@ class CellGridStateUnitSelected : CellGridState
         {
             var path = _unit.FindPath(_cellGrid.Cells, cell);
             _unit.Move(cell,path);
-            _cellGrid.CellGridState = new CellGridStateUnitSelected(_cellGrid, _unit);
+            _cellGrid.CellGridState = new CellGridStateUnitMovement(_cellGrid, _unit);
         }
     }
     public override void OnUnitClicked(Unit unit)
@@ -45,12 +45,12 @@ class CellGridStateUnitSelected : CellGridState
         if (_unitsInRange.Contains(unit) && _unit.ActionPoints > 0)
         {
             _unit.DealDamage(unit);
-            _cellGrid.CellGridState = new CellGridStateUnitSelected(_cellGrid, _unit);
+            _cellGrid.CellGridState = new CellGridStateUnitMovement(_cellGrid, _unit);
         }
 
         if (unit.PlayerNumber.Equals(_unit.PlayerNumber))
         {
-            _cellGrid.CellGridState = new CellGridStateUnitSelected(_cellGrid, unit);
+            _cellGrid.CellGridState = new CellGridStateUnitMovement(_cellGrid, unit);
         }
             
     }
