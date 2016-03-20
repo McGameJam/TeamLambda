@@ -30,9 +30,13 @@ public class MenuButtons : MonoBehaviour {
 		startButton.SetActive (false);
 	}
 
-	public void onVersusModeButtonClick()
+	public void onDeathMatch()
 	{
-		SceneManager.LoadScene ("VS_Side_Select" ,LoadSceneMode.Single);
+		SceneManager.LoadScene ("DeathMatch" ,LoadSceneMode.Single);
+	}
+	public void onKingofHillClick()
+	{
+		SceneManager.LoadScene ("KingOfTheHill" , LoadSceneMode.Single);
 	}
 
 	// Update is called once per frame
