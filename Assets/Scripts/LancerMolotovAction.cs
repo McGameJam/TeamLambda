@@ -25,6 +25,8 @@ public class LancerMolotovAction : UnitAction {
 				});
 			};
 			Action<Cell> cellAction = (Cell target) => {
+				Animator animator = unit.GetComponent<Animator>();
+				animator.SetTrigger("Molotov");
 				base.Action ();
 			};
 			grid.CellGridState = new CellGridStateTarget (grid, unit, this.targetType, cellFilter, cellAction);

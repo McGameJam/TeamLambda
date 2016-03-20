@@ -26,6 +26,8 @@ public class LancerBriqueAction : UnitAction
 				return hasActionPoints && isDifferent && isEnemy && isCloseEnough && isFarEnough && isWayClearOfObstacles;
 			};
 			Action<Unit> unitAction = (Unit target) => {
+				Animator animator = unit.GetComponent<Animator>();
+				animator.SetTrigger("Brique");
 				unit.DealDamage(target);
 				base.Action ();
 			};

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ActionBubble : MonoBehaviour {
 
@@ -36,12 +37,12 @@ public class ActionBubble : MonoBehaviour {
 			UnitAvecActions unitAvecAction = (UnitAvecActions)sender;
 			List<UnitAction> unitActions = unitAvecAction.actions;
 			foreach (UnitAction unitAction in unitActions) {
+				UnityAction callAction = () => {unitAction.Action ();};
 				GameObject newGO = GameObject.Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 				newGO.transform.SetParent(bubbleContainer.transform, false);
 				newGO.GetComponent<ActionButton> ().unitAction = unitAction;
 				newGO.GetComponent<ActionButton> ().unitAvecAction = unitAvecAction;
 				newGO.GetComponent<Image> ().sprite = unitAction.icon;
-				newGO.GetComponent<Button>().onClick.AddListener(() => unitAction.Action());
 			}
 			if (bubbleContainer.transform.childCount > 0) {
 				Vector3 positionTempo = Camera.main.WorldToScreenPoint (unitAvecAction.transform.position);

@@ -39,7 +39,7 @@ public class MyUnit : Unit
 
     public override void MarkAsAttacking(Unit other)
     {
-        StartCoroutine(Jerk(other));
+		//StartCoroutine(Jerk(other));
     }
     public override void MarkAsDefending(Unit other)
     {

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Base class for all units in the game.
@@ -90,8 +91,9 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void OnMouseDown()
     {
-        if (UnitClicked != null)
-            UnitClicked.Invoke(this, new EventArgs());
+		if (!EventSystem.current.IsPointerOverGameObject())
+	        if (UnitClicked != null)
+	            UnitClicked.Invoke(this, new EventArgs());
     }
     protected virtual void OnMouseEnter()
     {
