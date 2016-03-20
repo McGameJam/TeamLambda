@@ -9,7 +9,6 @@ using System;
 /// </summary>
 public class CellGrid : MonoBehaviour
 {
-	public GameObject winningTile;
     public event EventHandler GameStarted;
     public event EventHandler GameEnded;
     public event EventHandler TurnEnded;
@@ -155,11 +154,5 @@ public class CellGrid : MonoBehaviour
 
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnStart(); });
         Players.Find(p => p.PlayerNumber.Equals(CurrentPlayerNumber)).Play(this);
-
-		IsVictory ();
     }
-
-	private void IsVictory(){
-		Debug.Log (winningTile.GetComponent<MyOtherHexagon> ().IsTaken ());
-	}
 }
