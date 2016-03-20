@@ -1,0 +1,261 @@
+fileFormatVersion: 2
+guid: 7dc5c753f47c44db7ad7cf44296873f9
+timeCreated: 1458457157
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SmokeLaunch_0
+    21300002: SmokeLaunch_1
+    21300004: SmokeLaunch_2
+    21300006: SmokeLaunch_3
+    21300008: SmokeLaunch_4
+    21300010: SmokeLaunch_5
+    21300012: SmokeLaunch_6
+    21300014: SmokeLaunch_7
+    21300016: SmokeLaunch_8
+    21300018: SmokeLaunch_9
+    21300020: SmokeLaunch_10
+    21300022: SmokeLaunch_11
+    21300024: SmokeLaunch_12
+    21300026: SmokeLaunch_13
+    21300028: SmokeLaunch_14
+    21300030: SmokeLaunch_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SmokeLaunch_0
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 45
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_1
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 49
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_2
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 0
+        width: 32
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 16.5}
+        - {x: -15, y: 14.5}
+        - {x: -15, y: -31.5}
+        - {x: 14, y: -31.5}
+        - {x: 16, y: -25.5}
+        - {x: 16, y: 12.5}
+        - {x: 5, y: 16.5}
+      - - {x: -15, y: 26.5}
+        - {x: -12, y: 28.5}
+        - {x: -13, y: 31.5}
+        - {x: -16, y: 31.5}
+        - {x: -16, y: 27.5}
+    - name: SmokeLaunch_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 0
+        width: 23
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_4
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 0
+        width: 29
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_5
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 0
+        width: 29
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_6
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_7
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 0
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_8
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 0
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_9
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 0
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_10
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 0
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_11
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_12
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 0
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_13
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 0
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_14
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 0
+        width: 29
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SmokeLaunch_15
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 29
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,251 @@
+fileFormatVersion: 2
+guid: 820bcda5317fd495a895108b080809c9
+timeCreated: 1458456724
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: baton_0
+    21300002: baton_1
+    21300004: baton_2
+    21300006: baton_3
+    21300008: baton_4
+    21300010: baton_5
+    21300012: baton_6
+    21300014: baton_7
+    21300016: baton_8
+    21300018: baton_9
+    21300020: baton_10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: baton_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17, y: 19}
+        - {x: -17, y: 19}
+        - {x: -17, y: 1}
+        - {x: -12, y: -19}
+        - {x: 3, y: -19}
+        - {x: 3, y: -16}
+        - {x: 5, y: -19}
+        - {x: 17, y: -19}
+    - name: baton_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 0
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -8.5, y: 19.5}
+        - {x: -17.5, y: 9.5}
+        - {x: -17.5, y: -19.5}
+        - {x: 16.5, y: -19.5}
+        - {x: 17.5, y: -18.5}
+        - {x: 17.5, y: 19.5}
+    - name: baton_2
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 35
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7.5, y: 23.5}
+        - {x: -17.5, y: 5.5}
+        - {x: -17.5, y: -23.5}
+        - {x: 17.5, y: -23.5}
+        - {x: 17.5, y: 9.5}
+        - {x: 8.5, y: 23.5}
+    - name: baton_3
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 0
+        width: 58
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 1}
+        - {x: 29, y: 2}
+        - {x: 29, y: 19}
+        - {x: -26, y: 19}
+        - {x: -29, y: 16}
+        - {x: -29, y: -19}
+        - {x: 7, y: -19}
+        - {x: 8, y: -14}
+        - {x: 3, y: -9}
+    - name: baton_4
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 44
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: 19}
+        - {x: -19, y: 19}
+        - {x: -22, y: 9}
+        - {x: -22, y: -19}
+        - {x: 22, y: -19}
+        - {x: 22, y: 1}
+        - {x: 14, y: 12}
+    - name: baton_5
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0
+        width: 55
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27.5, y: 17}
+        - {x: -27.5, y: -4}
+        - {x: -10.5, y: -17}
+        - {x: 27.5, y: -17}
+        - {x: 27.5, y: 17}
+    - name: baton_6
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 0
+        width: 61
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: baton_7
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 0
+        width: 60
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: baton_8
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 0
+        width: 60
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 16.5}
+        - {x: -30, y: 0.5}
+        - {x: -30, y: -14.5}
+        - {x: -10, y: -16.5}
+        - {x: 30, y: -16.5}
+        - {x: 30, y: -3.5}
+        - {x: 22, y: 16.5}
+    - name: baton_9
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 0
+        width: 47
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 17.5}
+        - {x: -23.5, y: -9.5}
+        - {x: -23.5, y: -17.5}
+        - {x: 23.5, y: -17.5}
+        - {x: 23.5, y: -4.5}
+        - {x: 15.5, y: 17.5}
+    - name: baton_10
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.5, y: 15.5}
+        - {x: 14.5, y: 21.5}
+        - {x: 7.5, y: 21.5}
+        - {x: 7.5, y: 20.5}
+        - {x: -6.5, y: 20.5}
+        - {x: -19.5, y: 7.5}
+        - {x: -19.5, y: -21.5}
+        - {x: 19.5, y: -21.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
