@@ -15,8 +15,4 @@ public class ActionButton : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	public void OnButtonClick() {
-		Debug.Log (unitAction.nom);
-	}
 }
