@@ -95,7 +95,10 @@ public class CellGrid : MonoBehaviour
         
         StartGame();
 
-		bubbleActionCanvas.GetComponent<ActionBubble> ().CanvasRegisterCallBacks ();
+		if (bubbleActionCanvas != null)
+			bubbleActionCanvas.GetComponent<ActionBubble> ().CanvasRegisterCallBacks ();
+		else
+			Debug.LogError ("No Action Bubble component available");
     }
 
     private void OnCellDehighlighted(object sender, EventArgs e)
