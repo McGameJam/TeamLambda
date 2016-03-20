@@ -28,6 +28,7 @@ public class LancerMolotovAction : UnitAction {
 				Animator animator = unit.GetComponent<Animator>();
 				animator.SetTrigger("Molotov");
 				base.Action ();
+				gameObject.GetComponent<AudioSource>().Play();
 			};
 			grid.CellGridState = new CellGridStateTarget (grid, unit, this.targetType, cellFilter, cellAction);
 		}

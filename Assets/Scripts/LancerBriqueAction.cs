@@ -30,6 +30,7 @@ public class LancerBriqueAction : UnitAction
 				animator.SetTrigger("Brique");
 				unit.DealDamage(target);
 				base.Action ();
+				gameObject.GetComponent<AudioSource>().Play();
 			};
 			grid.CellGridState = new CellGridStateTarget (grid, unit, CellGridStateTarget.eTargetType.Point, predicate, unitAction);
 		}
