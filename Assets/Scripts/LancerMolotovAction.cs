@@ -5,10 +5,8 @@ using System.Collections.Generic;
 
 public class LancerMolotovAction : UnitAction {
 
-	public LancerMolotovAction ()
-	{
-		this.nom = "Lancer Molotov";
-	}
+	public int targetRange;
+	public CellGridStateTarget.eTargetType targetType;
 
 	public override void Action ()
 	{
@@ -20,16 +18,16 @@ public class LancerMolotovAction : UnitAction {
 				return list.FindAll(c => {
 					var hasActionPoints = unit.ActionPoints > 0;
 					var isDifferent = unit.Cell != c;
-					var isCloseEnough = unit.Cell.GetDistance (c) <= 4;
+					var isCloseEnough = unit.Cell.GetDistance (c) <= this.targetRange;
 					var u = grid.Units.Find(otherUnit => otherUnit.Cell == c);
 					var isWayClearOfObstacles = u == null || !unit.IsObstacleInTheWay (u, unit.Cell);
 					return hasActionPoints && isDifferent && isCloseEnough && isWayClearOfObstacles;
 				});
 			};
 			Action<Cell> cellAction = (Cell target) => {
-				this.active = false;
+				base.Action ();
 			};
-			grid.CellGridState = new CellGridStateTarget (grid, unit, CellGridStateTarget.eTargetType.Quatre, cellFilter, cellAction);
+			grid.CellGridState = new CellGridStateTarget (grid, unit, this.targetType, cellFilter, cellAction);
 		}
 	}
 }
