@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-using System.Collections.Generic;
 
-public class LancerBriqueAction : UnitAction
-{
+public class LancerMolotovAction : UnitAction {
 
-	public LancerBriqueAction ()
+	public LancerMolotovAction ()
 	{
-		this.nom = "Lancer brique";
+		this.nom = "Lancer Molotov";
 	}
 
 	public override void Action ()
@@ -27,6 +25,7 @@ public class LancerBriqueAction : UnitAction
 			};
 			Action<Unit> unitAction = (Unit target) => {
 				unit.DealDamage(target);
+				this.active = false;
 			};
 			grid.CellGridState = new CellGridStateTarget (grid, unit, predicate, unitAction);
 		}

@@ -145,8 +145,10 @@ class OtherGuiController : MonoBehaviour
 		DropdownActions.interactable = actions != null;
 		if (actions != null) {
 			foreach (UnitAction action in actions) {
-				noms.Add (action.nom);
-				actionsAffichees.Add (action);
+				if (action.active) {
+					noms.Add (action.nom);
+					actionsAffichees.Add (action);
+				}
 			}
 		}
 		DropdownActions.AddOptions (noms);

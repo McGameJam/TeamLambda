@@ -8,5 +8,6 @@ public class Manifestant : UnitAvecActions {
 	{
 		this.actions.Add (new MovementAction ());
 		this.actions.Add (new LancerBriqueAction ());
+		this.actions.Add (new LancerMolotovAction ());
 	}
 }
