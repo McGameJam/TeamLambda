@@ -38,7 +38,15 @@ public class MenuButtons : MonoBehaviour {
 	{
 		SceneManager.LoadScene ("KingOfTheHill" , LoadSceneMode.Single);
 	}
+	public void onCreditClick()
+	{
+		SceneManager.LoadScene ("Credits" , LoadSceneMode.Single);
+	}
 
+	public void onReturnToMainMenu()
+	{
+		SceneManager.LoadScene ("EarlGym" , LoadSceneMode.Single);
+	}
 	// Update is called once per frame
 	void Update () {
 		

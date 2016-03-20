@@ -157,6 +157,7 @@ class OtherGuiController : MonoBehaviour
     public void RestartLevel()
     {
         Application.LoadLevel(Application.loadedLevel);
+
     }
 
 	public void AppliquerAction(int index)
