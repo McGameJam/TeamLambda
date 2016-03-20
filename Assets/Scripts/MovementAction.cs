@@ -7,6 +7,7 @@ public class MovementAction : UnitAction {
 
 	public override void Action()
 	{
+		
 		GameObject cellGridObj = GameObject.Find ("CellGrid");
 		CellGrid grid = cellGridObj.GetComponent<CellGrid> ();
 		if (grid != null && grid.CellGridState is CellGridStateUnitSelected) {
@@ -27,6 +28,7 @@ public class MovementAction : UnitAction {
 			};
 			//grid.CellGridState = new CellGridStateUnitMovement(grid, (grid.CellGridState as CellGridStateUnitSelected).selection);
 			grid.CellGridState = new CellGridStateTarget (grid, unit, CellGridStateTarget.eTargetType.Path, filter, cellAction);
+			gameObject.GetComponent<AudioSource>().Play();
 		}
 	}
 }

@@ -5,6 +5,7 @@ public class ActionButton : MonoBehaviour {
 
 	public UnitAvecActions unitAvecAction;
 	public UnitAction unitAction;
+	public AudioClip audioClip;
 
 	public void Apply()
 	{

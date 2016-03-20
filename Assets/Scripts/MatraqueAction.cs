@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-using System.Collections.Generic;
 
-public class LancerBriqueAction : UnitAction
-{
+public class MatraqueAction : UnitAction {
 
 	public int targetMinRange = 0;
-	public int targetMaxRange = 2;
+	public int targetMaxRange = 1;
+	public CellGridStateTarget.eTargetType targetType = CellGridStateTarget.eTargetType.Point;
 
 	public override void Action ()
 	{
@@ -27,12 +26,11 @@ public class LancerBriqueAction : UnitAction
 			};
 			Action<Unit> unitAction = (Unit target) => {
 				Animator animator = unit.GetComponent<Animator>();
-				animator.SetTrigger("Brique");
+				animator.SetTrigger("Matraque");
 				unit.DealDamage(target);
 				base.Action ();
-				gameObject.GetComponent<AudioSource>().Play();
 			};
-			grid.CellGridState = new CellGridStateTarget (grid, unit, CellGridStateTarget.eTargetType.Point, predicate, unitAction);
+			grid.CellGridState = new CellGridStateTarget (grid, unit, this.targetType, predicate, unitAction);
 		}
 	}
 }
