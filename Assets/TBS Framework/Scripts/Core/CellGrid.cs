@@ -16,7 +16,8 @@ public class CellGrid : MonoBehaviour
     public event EventHandler GameStarted;
     public event EventHandler GameEnded;
     public event EventHandler TurnEnded;
-    
+	public Canvas bubbleActionCanvas;
+
     private CellGridState _cellGridState;//The grid delegates some of its behaviours to cellGridState object.
     public CellGridState CellGridState
     {
@@ -93,6 +94,8 @@ public class CellGrid : MonoBehaviour
             Debug.LogError("No IUnitGenerator script attached to cell grid");
         
         StartGame();
+
+		bubbleActionCanvas.GetComponent<ActionBubble> ().CanvasRegisterCallBacks ();
     }
 
     private void OnCellDehighlighted(object sender, EventArgs e)
