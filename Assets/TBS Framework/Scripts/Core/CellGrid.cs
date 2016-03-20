@@ -181,13 +181,14 @@ public class CellGrid : MonoBehaviour
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnStart(); });
         Players.Find(p => p.PlayerNumber.Equals(CurrentPlayerNumber)).Play(this);
 		Debug.Log ("Current Player: " + CurrentPlayerNumber);
-		vTest ();
+
+		if (winningTile != null)
+			vTest ();
 
     }
 
 	public void vTest()
 	{
-		
 		
 		if (winningTile.GetComponent<Cell> ().IsTaken && (pl_Num_holder == null || pl_Num_holder == CurrentPlayerNumber)) {
 			pl_Num_holder = CurrentPlayerNumber;
