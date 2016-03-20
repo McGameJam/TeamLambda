@@ -20,8 +20,6 @@ class OtherGuiController : MonoBehaviour
     public Text DefenceText;
     public Text RangeText;
 
-	public Dropdown DropdownActions;
-
 	private List<UnitAction> actionsAffichees = new List<UnitAction>();
 
     private void Start()
@@ -139,11 +137,9 @@ class OtherGuiController : MonoBehaviour
 	private void MAJActions(object sender, EventArgs e)
 	{
 		var actions = sender is UnitAvecActions ? (sender as UnitAvecActions).actions : null;
-		DropdownActions.ClearOptions ();
 		this.actionsAffichees.Clear ();
 		List<string> noms = new List<string> ();
 		noms.Add ("Actions");
-		DropdownActions.interactable = actions != null;
 		if (actions != null) {
 			foreach (UnitAction action in actions) {
 				if (action.active) {
@@ -152,7 +148,6 @@ class OtherGuiController : MonoBehaviour
 				}
 			}
 		}
-		DropdownActions.AddOptions (noms);
 	}
 
     public void RestartLevel()
@@ -165,7 +160,6 @@ class OtherGuiController : MonoBehaviour
 	{
 		if (index > 0)
 			actionsAffichees [index - 1].Action ();
-		DropdownActions.value = 0;
 	}
 
 	public void ReturnToMainMenu()
