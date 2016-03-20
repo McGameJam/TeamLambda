@@ -190,6 +190,8 @@ public class CellGrid : MonoBehaviour
 			pl_Num_holder = (pl_Num_holder + 1)%2;
 
 
+
+
 		}
 
 
