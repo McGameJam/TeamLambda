@@ -9,6 +9,7 @@ using System;
 /// </summary>
 public class CellGrid : MonoBehaviour
 {
+	public int waitingTurn;
 	public GameObject winningTile;
     public event EventHandler GameStarted;
     public event EventHandler GameEnded;
@@ -160,6 +161,9 @@ public class CellGrid : MonoBehaviour
     }
 
 	private void IsVictory(){
-		Debug.Log (winningTile.GetComponent<MyOtherHexagon> ().IsTaken ());
+		if (winningTile.gameObject.GetComponent<Cell> ().IsTaken) {
+			Debug.Log ("asdasfasas");
+		} else
+			Debug.Log ("not taken");
 	}
 }
