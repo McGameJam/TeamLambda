@@ -9,7 +9,10 @@ using System;
 /// </summary>
 public class CellGrid : MonoBehaviour
 {
-
+	public int SetTime;
+	public int WaitingTime;// only public for testing, change to private 
+	private int pl_Num_holder;
+	public GameObject winningTile;
     public event EventHandler GameStarted;
     public event EventHandler GameEnded;
     public event EventHandler TurnEnded;
@@ -46,6 +49,7 @@ public class CellGrid : MonoBehaviour
 
     void Start()
     {
+		WaitingTime = SetTime;
         Players = new List<Player>();
         for (int i = 0; i < PlayersParent.childCount; i++)
         {
@@ -145,16 +149,53 @@ public class CellGrid : MonoBehaviour
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnEnd(); });
 
         CurrentPlayerNumber = (CurrentPlayerNumber + 1) % NumberOfPlayers;
+
         while (Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).Count == 0)
         {
             CurrentPlayerNumber = (CurrentPlayerNumber + 1)%NumberOfPlayers;
         }//Skipping players that are defeated.
 
+
         if (TurnEnded != null)
             TurnEnded.Invoke(this, new EventArgs());
+		
 
         Units.FindAll(u => u.PlayerNumber.Equals(CurrentPlayerNumber)).ForEach(u => { u.OnTurnStart(); });
         Players.Find(p => p.PlayerNumber.Equals(CurrentPlayerNumber)).Play(this);
+		Debug.Log ("Current Player: " + CurrentPlayerNumber);
+		vTest ();
+
     }
+
+	public void vTest()
+	{
+		
+		
+		if (winningTile.GetComponent<Cell> ().IsTaken && (pl_Num_holder == null || pl_Num_holder == CurrentPlayerNumber)) {
+			pl_Num_holder = CurrentPlayerNumber;
+			Debug.Log ("taken by player " + pl_Num_holder); 
+			WaitingTime -= 1;
+
+
+			if (WaitingTime <= 0) {
+				if (GameEnded != null) {
+					GameEnded.Invoke (this, new EventArgs ());
+				}
+			}
+
+		}
+		else if(!winningTile.GetComponent<Cell> ().IsTaken){
+			Debug.Log ("Current unit was removed from tile, resetting counter.");
+			WaitingTime = SetTime;
+			pl_Num_holder = (pl_Num_holder + 1)%2;
+
+
+		}
+
+
+
+
+
+	}
 
 }
